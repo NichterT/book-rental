@@ -2,8 +2,6 @@ package hu.mik.prog5.assignment.bookrental.entity;
 
 import lombok.Data;
 
-import java.time.LocalDate;
-
 @Data
 public class Book {
 
@@ -15,7 +13,7 @@ public class Book {
     private Integer pageNumber;
     private Genre genre;
     private String rentedBy;
-    private LocalDate rentedUntil;
+    private String rentedUntil;
     private Boolean isRented;
 
 }
