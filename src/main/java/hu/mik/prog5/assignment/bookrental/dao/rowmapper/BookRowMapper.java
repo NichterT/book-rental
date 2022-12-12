@@ -21,9 +21,7 @@ public class BookRowMapper implements RowMapper<Book> {
         book.setPageNumber(rs.getInt("page_number"));
         book.setGenre(Genre.valueOf(rs.getString("genre")));
         book.setRentedBy(rs.getString("rented_by"));
-        if (rs.getDate("rented_until") != null) {
-            book.setRentedUntil(rs.getDate("rented_until").toLocalDate());
-        }
+        book.setRentedUntil(rs.getString("rented_until"));
         book.setIsRented(rs.getBoolean("is_rented"));
 
         return book;
