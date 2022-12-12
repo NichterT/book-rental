@@ -10,14 +10,16 @@ CREATE ROLE book_rental WITH
 
 CREATE TABLE book
 (
-    id          SERIAL PRIMARY KEY,
-    isbn        SMALLINT NOT NULL,
-    title       VARCHAR(100) NOT NULL,
-    author      VARCHAR(100) NOT NULL,
-    publisher   VARCHAR(100) NOT NULL,
-    page_number SMALLINT NOT NULL,
-    genre       VARCHAR(100) NOT NULL,
-    is_rented   BOOLEAN NOT NULL
+    id           SERIAL PRIMARY KEY,
+    isbn         VARCHAR(20)  NOT NULL,
+    title        VARCHAR(100) NOT NULL,
+    author       VARCHAR(100) NOT NULL,
+    publisher    VARCHAR(100) NOT NULL,
+    page_number  SMALLINT     NOT NULL,
+    genre        VARCHAR(100) NOT NULL,
+    rented_by    VARCHAR(100),
+    rented_until DATE,
+    is_rented    BOOLEAN      NOT NULL
 );
 
 CREATE TABLE users
