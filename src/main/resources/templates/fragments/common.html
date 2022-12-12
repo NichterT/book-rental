@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <title th:text="#{|title.${title}|}">Title</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/style.css"
+          th:href="@{/css/style.css}">
+</head>
+<body>
+<!--<div th:fragment="header" class="header" style="display: flex; justify-content: space-between">-->
+<div th:fragment="header" class="header">
+    <!--    <h1 sec:authorize="isAuthenticated()">[[#{header.hello}]] [[${#httpServletRequest.remoteUser}]]!</h1>-->
+    <div id="menu-wrapper">
+        <div class="menu-item">
+            <a th:href="@{/}" th:text="#{header.home}"></a>
+        </div>
+        <div class="menu-item" sec:authorize="hasAuthority('CUSTOMER')">
+            <a th:href="@{/rental}" th:text="#{header.rental}"></a>
+        </div>
+        <div class="menu-item">
+            <a th:href="@{/my-rental(username=${#authentication.getPrincipal().getUsername()})}"
+               th:text="#{header.my-rental}"></a>
+        </div>
+        <div class="menu-item" sec:authorize="hasAuthority('LIBRARIAN')">
+            <a th:href="@{/retrieve-book}" th:text="#{header.retrieve}"></a>
+        </div>
+        <div class="menu-item" sec:authorize="hasAuthority('LIBRARIAN')">
+            <a th:href="@{/save-book}" th:text="#{header.add-book}"></a>
+        </div>
+        <div class="menu-item">
+            <p sec:authentication="name"></p>
+            <form method="post" th:action="@{/logout}">
+                <button th:text="#{header.logout}">Logout</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
