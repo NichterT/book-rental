@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/common :: head(title='save-book')">
+</head>
+<body>
+<div th:replace="fragments/common :: header"></div>
+<!--/*@thymesVar id="book" type="hu.mik.prog5.assignment.bookrental.entity.Book"*/-->
+<div class="content">
+    <h1 th:text="#{title.save-book}"></h1>
+    <br>
+    <form method="post" action="#" th:action="@{/save-book}" th:object="${book}">
+        <fieldset>
+            <div class="form-item">
+                <label for="isbn" th:text="#{book.isbn}"></label>
+                <br>
+                <input type="text" id="isbn" th:field="*{isbn}">
+            </div>
+            <div class="form-item">
+                <label for="title" th:text="#{book.title}"></label>
+                <br>
+                <input type="text" id="title" th:field="*{title}">
+            </div>
+            <div class="form-item">
+                <label for="author" th:text="#{book.author}"></label>
+                <br>
+                <input type="text" id="author" th:field="*{author}">
+            </div>
+            <div class="form-item">
+                <label for="publisher" th:text="#{book.publisher}"></label>
+                <br>
+                <input type="text" id="publisher" th:field="*{publisher}">
+            </div>
+            <div class="form-item">
+                <label for="pagenumber" th:text="#{book.pagenumber}"></label>
+                <br>
+                <input type="text" id="pagenumber" th:field="*{pageNumber}">
+            </div>
+            <div class="form-item">
+                <label for="genre" th:text="#{book.genre}"></label>
+                <br>
+                <select id="genre" th:name="genre">
+                    <option th:each="genreType : ${allGenre}"
+                            th:value="${genreType}"
+                            th:text="#{|genre.${genreType}|}"></option>
+                </select>
+                <input type="hidden" th:if="${book.getId()}" th:name="id" th:value="${book.getId()}">
+                <input type="hidden" th:name="isRented" th:value="${false}">
+            </div>
+            <div class="form-item">
+                <button type="submit" th:text="#{book.submit}"></button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>
