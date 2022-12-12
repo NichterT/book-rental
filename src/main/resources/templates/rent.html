@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/common :: head(title='rent')">
+</head>
+<body>
+<div th:replace="fragments/common :: header"></div>
+<div class="content">
+    <h1 th:text="#{title.rent}"></h1>
+    <br>
+    <form method="post" action="#" th:action="@{/rent}" th:object="${book}">
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:name="rentedBy" th:value="${#authentication.getPrincipal().getUsername()}">
+        <input type="hidden" th:name="isRented" th:value="${true}">
+        <div class="form-item">
+            <label for="rent-until" th:text="#{book.renteduntil}"></label>
+            <br>
+            <input type="date" id="rent-until" th:field="*{rentedUntil}">
+        </div>
+        <div class="form-item">
+            <button type="submit" th:text="#{rent.submit}"></button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
