@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/common :: head(title='rent')">
+</head>
+<body>
+<div th:replace="fragments/common :: header"></div>
+<div class="content">
+    <h1 th:text="#{title.rent}"></h1>
+    <br>
+    <div th:if="${books.size() > 0}">
+        <table>
+            <tr>
+                <th th:text="#{book.isbn}"></th>
+                <th th:text="#{book.title}"></th>
+                <th th:text="#{book.author}"></th>
+                <th th:text="#{book.publisher}"></th>
+                <th th:text="#{book.genre}">Genre</th>
+                <th th:text="#{book.pagenumber}"></th>
+                <th th:text="#{book.action}"></th>
+            </tr>
+            <tr th:each="book : ${books}"
+                th:if="${!book.getIsRented()}"
+            >
+                <td th:text="${book.getIsbn()}"></td>
+                <td th:text="${book.getTitle()}"></td>
+                <td th:text="${book.getAuthor()}"></td>
+                <td th:text="${book.getPublisher()}"></td>
+                <td th:text="${book.getGenre()}"></td>
+                <td th:text="${book.getPageNumber()}"></td>
+                <td>
+                    <a th:href="@{/rent(id=${book.getId()})}">
+                        <button type="button" th:text="#{book.rent}"></button>
+                    </a>
+                    <a sec:authorize="hasAuthority('LIBRARIAN')" th:href="@{/save-book(id=${book.getId()})}">
+                        <button type="button" th:text="#{book.update}"></button>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div th:unless="${books.size() > 0}">
+        <h1 th:text="#{nodata}"></h1>
+    </div>
+</div>
+</body>
+</html>
