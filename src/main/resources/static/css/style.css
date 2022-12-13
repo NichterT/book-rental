@@ -1,0 +1,139 @@
+body {
+    font-family: 'DejaVu Sans', Arial, Helvetica;
+    background-color: #242424;
+    color: #f2f2f2;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+button {
+    background-color: inherit;
+    border: 1px solid #f2f2f2;
+    border-radius: 10px;
+    color: #f2f2f2;
+    padding: 5px 6px;
+    font-size: 16px;
+}
+
+table, th, td {
+    border: 1px solid #f2f2f2;
+    text-align: center;
+}
+
+th, td {
+    padding: 10px;
+}
+
+th {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+input {
+    background-color: inherit;
+    color: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+form {
+    border: none;
+}
+
+select {
+    background-color: #242424;
+    color: #f2f2f2;
+    text-align: center;
+    border: 1px solid #f2f2f2;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+.login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    width: 200px;
+}
+
+.login button {
+    float: right;
+}
+
+.login span {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content {
+    padding-top: 2rem;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.menu-item {
+    float: left;
+}
+
+.form-item {
+    margin-bottom: 15px;
+}
+
+#menu-wrapper {
+    overflow: hidden;
+    background-color: #333;
+    z-index: 100;
+    top: 0;
+    width: 100%;
+    margin: auto;
+}
+
+#menu-wrapper a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+button:hover,
+#menu-wrapper a:hover,
+#menu-wrapper button:hover {
+    background-color: #535bf2;
+    cursor: pointer;
+}
+
+#menu-wrapper button {
+    float: left;
+    display: block;
+    background-color: inherit;
+    color: #f2f2f2;
+    border: none;
+    border-radius: unset;
+    cursor: pointer;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#menu-wrapper :last-child {
+    float: right;
+    display: flex;
+    justify-content: space-between;
+}
+
+#menu-wrapper :last-child p {
+    color: #f2f2f2;
+    float: left;
+    line-height: normal;
+    margin-right: 10px;
+}
