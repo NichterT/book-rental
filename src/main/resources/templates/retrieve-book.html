@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/common :: head(title='retrieve')">
+</head>
+<body>
+<div th:replace="fragments/common :: header"></div>
+<div class="content">
+    <h1 th:text="#{title.retrieve}"></h1>
+    <br>
+    <div th:if="${rented_books.size() > 0}">
+        <table>
+            <tr>
+                <th th:text="#{book.isbn}"></th>
+                <th th:text="#{book.title}"></th>
+                <th th:text="#{book.author}"></th>
+                <th th:text="#{book.publisher}"></th>
+                <th th:text="#{book.genre}"></th>
+                <th th:text="#{book.pagenumber}"></th>
+                <th th:text="#{book.renteduntil}"></th>
+                <th th:text="#{book.rentedby}"></th>
+                <th th:text="#{book.action}"></th>
+            </tr>
+            <tr th:each="book : ${rented_books}">
+                <td th:text="${book.getIsbn()}"></td>
+                <td th:text="${book.getTitle()}"></td>
+                <td th:text="${book.getAuthor()}"></td>
+                <td th:text="${book.getPublisher()}"></td>
+                <td th:text="${book.getGenre()}"></td>
+                <td th:text="${book.getPageNumber()}"></td>
+                <td th:text="${book.getRentedUntil()}"></td>
+                <td th:text="${book.getRentedBy()}"></td>
+                <td>
+                    <a th:href="@{'/retrieve-book/{id}'(id=${book.getId()})}">
+                        <button th:text="#{book.retrieve}"></button>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div th:unless="${rented_books.size() > 0}">
+        <h1 th:text="#{nodata}"></h1>
+    </div>
+</div>
+</body>
+</html>
